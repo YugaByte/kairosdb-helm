@@ -13,6 +13,17 @@ helm install helm/kairosdb
 helm install -f helm/aws-dev.yaml ...
 # endpoint is an internal AWS ELB
 ```
+### gce
+```aidl
+helm install -f helm/gce-yb.yaml -s kairosdb.seeds=10.150.0.10,10.150.0.11,10.150.0.13
+# make a not of the app name, this is needed for running loadtester
+```
+
+### Running load tester
+```aidl
+./test/python/write-test.sh 3 http://demo-kairosdb-app demo 100 1000 50
+./test/python/read-test.sh 3 http://demo-kairosdb-app demo 86400 1000 50
+```
 
 ## Features
 - Minikube
