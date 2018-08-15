@@ -3,48 +3,10 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 
-useLocalDB: true
-
-scylladb:
-  image:
-    repository: gcmcnutt/docker-scylladb
-
-    # TODO this should be provided by, say, gradle driver
-    tag: gmcnutt-0.8.6-SNAPSHOT
-
-  config:
-    overprovisioned: 1
-    maxIORequests: 256
-    batchSizeWarnKb: 50
-    batchSizeFailKb: 70
-    blockedReactorNotifyMs: 7000
-    writeRequestTimeoutMs: 7000
-#    cpu: 1
-#    memory: 500M
-
-  service:
-    cqlNativePort: 9042
-    thriftPort: 9160
-    internodePort: 7000
-    jmxPort: 7199
-    scyllaRestPort: 10000
-    prometheusPort: 9180
-
-    probeTimeoutSeconds: 10
-    initialDelaySeconds: 30
-
-  resources: {}
-
 kairosdb:
   image:
     repository: gcmcnutt/docker-kairosdb
-
-    # TODO this should be provided by, say, gradle driver
-<<<<<<< HEAD
-    tag: gmcnutt-0.9.2-SNAPSHOT
-=======
     tag: gmcnutt-0.8.6-SNAPSHOT
->>>>>>> Rebase upstream branch
 
 #    datastoreReplicationFactor: 1
 #

@@ -24,39 +24,3 @@ spec:
   selector:
     app: {{ template "kairosdb.name" . }}
     release: {{ .Release.Name }}
-
----
-{{- if .Values.useLocalDB }}
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ template "kairosdb.fullname" . }}
-  labels:
-    app: {{ template "kairosdb.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-{{- if .Values.scylladb.annotations }}
-  annotations:
-{{ toYaml .Values.scylladb.annotations | indent 4 }}
-{{- end }}
-spec:
-  clusterIP: None
-  ports:
-    - port: {{ .Values.scylladb.service.cqlNativePort }}
-      name: cql
-    - port: {{ .Values.scylladb.service.thriftPort }}
-      name: thrift
-    - port: {{ .Values.scylladb.service.internodePort }}
-      name: internode
-    - port: {{ .Values.scylladb.service.jmxPort }}
-      name: jmx
-    - port: {{ .Values.scylladb.service.scyllaRestPort }}
-      name: rest
-    - port: {{ .Values.scylladb.service.prometheusPort }}
-      name: prometheus
-  selector:
-    app: {{ template "kairosdb.name" . }}
-    release: {{ .Release.Name }}
-{{- end }}
-
