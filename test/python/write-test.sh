@@ -33,7 +33,7 @@ VOLUMES=$6
 METRIC_WRITE_RATE=20000
 REAL_TTL_SEC=259200
 
-IMAGE=gcmcnutt/ktest:lyu16
+IMAGE=quay.io/yugabyte/kairosdb-loader:latest
 
 for i in $(seq 1 $JOBS)
 do
