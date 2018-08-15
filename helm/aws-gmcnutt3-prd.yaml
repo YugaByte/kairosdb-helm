@@ -5,6 +5,9 @@ replicaCount: 3
 persistence:
   size: 4Ti
   storageClass: pure
+  selector:
+    matchLabels:
+      rack: "AWS"
 
 scylladb:
   config:
