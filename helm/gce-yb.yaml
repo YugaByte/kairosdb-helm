@@ -1,0 +1,50 @@
+# GKE to yuga configuration
+
+replicaCount: 3
+
+#persistence:
+#  size: 750Gi
+#  storageClass: io1
+
+scylladb:
+  image:
+    repository: quay.io/yugabyte/docker-scylladb
+    tag: 0.8.6-SNAPSHOT
+    
+  config:
+    overprovisioned: 0
+    cpu: 3
+    memory: 3G
+
+  resources:
+    requests:
+      cpu: 3000m
+      memory: 3Gi
+
+kairosdb:
+  image:
+    repository: quay.io/yugabyte/docker-kairosdb
+    tag: 0.8.6-SNAPSHOT
+
+  datastoreReplicationFactor: 3
+
+  queueProcessor: org.kairosdb.core.queue.MemoryQueueProcessor
+  defaultTtl: "86400"
+  memoryQueueSize: "1000000"
+
+  service:
+    type: LoadBalancer
+    externalPort: 80
+
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 1Gi
+
+  # override going to...
+  seeds: "10.150.0.20,10.150.0.29,10.150.0.38"
+  connectLocalDB: false
+
+global:
+  image:
+    pullPolicy: Always
