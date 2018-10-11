@@ -15,7 +15,7 @@ helm install -f helm/aws-dev.yaml ...
 ```
 ### gce
 ```aidl
-helm install -f helm/gce-yb.yaml -s kairosdb.seeds=10.150.0.10,10.150.0.11,10.150.0.13
+helm install -f helm/gce-yb.yaml --set kairosdb.seeds=10.150.0.10,10.150.0.11,10.150.0.13 --name demo
 # make a not of the app name, this is needed for running loadtester
 ```
 

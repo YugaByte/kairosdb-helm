@@ -11,7 +11,8 @@ TTL=$4
 DEVICES=$5
 VOLUMES=$6
 
-QUERIES=50000000
+#QUERIES=50000000
+QUERIES=25000000
 
 IMAGE=quay.io/yugabyte/kairosdb-loader:latest
 CONTEXT=aws

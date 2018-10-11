@@ -77,7 +77,7 @@ for h in xrange(settings.HOURS):
                 a['name'] = '%s|%d' % (settings.METRIC_BASE, m)
                 a['tags'] = {"device": str(d), "volume": str(v)}
                 a['type'] = 'float'
-                # a['ttl'] = settings.REAL_TTL_SEC
+                a['ttl'] = settings.REAL_TTL_SEC
 
                 # for each sample
                 dp = []
