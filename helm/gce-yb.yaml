@@ -27,7 +27,7 @@ kairosdb:
       memory: 1Gi
 
   # override going to...
-  seeds: "10.150.0.19,10.150.0.15,10.150.0.11"
+  seeds: "10.150.0.11,10.150.0.15,10.150.0.19"
   connectLocalDB: false
 
 global:
